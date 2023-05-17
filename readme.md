@@ -8,7 +8,7 @@ And since I couldn't find one that met my brief, I decided why not try and write
 
 ## Formats Handled So Far...
 
-- Agilent / Infinium .wfm
+- Agilent / Infiniium .wfm
     -  Versions 6 - 11
 - CSV
 - TekTronix ISF
