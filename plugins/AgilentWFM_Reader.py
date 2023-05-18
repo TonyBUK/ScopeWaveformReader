@@ -1014,7 +1014,7 @@ class Reader(plugins.common_basetypes.Reader):
 
         try :
             self.__WFMHeaderConstants().getElement(None, kFileBuffer, None, 0, WFMHeaderElements.WFMHeaderIdentifier, None, None, ErrorLevelHandling.NORMAL)
-        except Exception :
+        except Exception as e :
             return False
         #end
 
