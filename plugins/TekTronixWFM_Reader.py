@@ -19,6 +19,12 @@ class Reader(plugins.common_basetypes.Reader):
 
     class __WFMHeaderConstants(plugins.common_basetypes.GenericFixedWidthConstants) :
         def __init__(self) :
+            # Default to Intel Order, this will promptly be overrridden once the WFMByteOrderVerification is
+            # parsed, as this is specifically designed to return the same data irrespective of byte order,
+            # making this initial state arbitrary.
+            #
+            # Note: This is needed, as struct.unpack behaves weirdly on my M1 Mac if an order isn't specified.
+            self._ORDER            = "<"
             self.HEADER_TYPE       = WFMHeaderElements
             self.HEADER_DEFINITION = {
                 WFMHeaderElements.WFMByteOrderVerification              : plugins.common_basetypes.HeaderFixedWidthElement(size = 2,  conversion = plugins.common_func.getUnsignedShort,                          error = plugins.common_basetypes.ErrorLevel.ERROR,   casting = WFMByteOrderVerificationType.convert,   post = None,                                                    validate = plugins.TekTronixWFM_Reader_helper.WFMByteOrderVerification),
@@ -233,7 +239,7 @@ class Reader(plugins.common_basetypes.Reader):
 
         try :
             self.__WFMHeaderConstants().getElement(None, kFileBuffer, None, 0, WFMHeaderElements.WFMByteOrderVerification, None, None, ErrorLevelHandling.NORMAL)
-        except Exception :
+        except Exception as e :
             return False
         #end
 
