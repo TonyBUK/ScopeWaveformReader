@@ -12,10 +12,8 @@ import plugins.common_basetypes
 import plugins.common_errorhandler
 import plugins.TekTronixISF_Reader_helper
 
-import array
-import csv
-import io
 import typing
+import array
 
 # The following are items I've found in the waveforms to date
 
