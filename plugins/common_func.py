@@ -55,72 +55,86 @@ def __validateSize(kByteArray : bytes, nOffset : int, nSize : int) -> int :
 
 def getByteArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 1) -> bytes:
     assert(nSize >= 1)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize}s", kByteArray, nOffset)[0]
 #end
 
 def getSignedChar(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 1) -> int :
     assert(1 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}b", kByteArray, nOffset)[0]
 #end
 
 def getUnsignedChar(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 1) -> int :
     assert(1 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}B", kByteArray, nOffset)[0]
 #end
 
 def getSignedShort(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 2) -> int :
     assert(2 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}h", kByteArray, nOffset)[0]
 #end
 
 def getUnsignedShort(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 2) -> int :
     assert(2 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}H", kByteArray, nOffset)[0]
 #end
 
 def getSignedLong(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 4) -> int :
     assert(4 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}l", kByteArray, nOffset)[0]
 #end
 
 def getUnsignedLong(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 4) -> int :
     assert(4 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}L", kByteArray, nOffset)[0]
 #end
 
 def getSignedLongLong(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 8) -> int :
     assert(8 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}q", kByteArray, nOffset)[0]
 #end
 
 def getUnsignedLongLong(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 8) -> int :
     assert(8 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}Q", kByteArray, nOffset)[0]
 #end
 
 def getFloat(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 4) -> float :
     assert(4 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}f", kByteArray, nOffset)[0]
 #end
 
 def getDouble(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = 8) -> float :
     assert(8 == nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}d", kByteArray, nOffset)[0]
 #end
 
 def getSignedCharArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize}b", kByteArray, nOffset)
 #end
 
 def getUnsignedCharArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize}B", kByteArray, nOffset)
 #end
 
 def getSignedShortArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
     assert((nSize % 2) == 0)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//2}h", kByteArray, nOffset)
 #end
 
@@ -132,49 +146,56 @@ def getSignedShortArrayWithRangeCheck(kByteArray : bytes, kOrder : str, nOffset 
     #end
 
     assert((nSize % 2) == 0)
-
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//2}h", kByteArray, nOffset)
 #end
 
 def getUnsignedShortArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
     assert((nSize % 2) == 0)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//2}H", kByteArray, nOffset)
 #end
 
 def getSignedLongArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
     assert((nSize % 4) == 0)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//4}l", kByteArray, nOffset)
 #end
 
 def getUnsignedLongArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
     assert((nSize % 4) == 0)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//4}L", kByteArray, nOffset)
 #end
 
 def getSignedLongLongArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
     assert((nSize % 8) == 0)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//8}q", kByteArray, nOffset)
 #end
 
 def getUnsignedLongLongArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
     assert((nSize % 8) == 0)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//8}Q", kByteArray, nOffset)
 #end
 
 def getFloatArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
     assert((nSize % 4) == 0)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//4}f", kByteArray, nOffset)
 #end
 
 def getDoubleArray(kByteArray : bytes, kOrder : str, nOffset : int = 0, nSize : int = None) -> tuple :
     nSize = __validateSize(kByteArray=kByteArray, nOffset=nOffset, nSize=nSize)
     assert((nSize % 8) == 0)
+    assert(kOrder in ["<", ">"])
     return struct.unpack_from(f"{kOrder}{nSize//8}d", kByteArray, nOffset)
 
 #end
