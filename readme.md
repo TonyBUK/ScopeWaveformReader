@@ -8,13 +8,15 @@ And since I couldn't find one that met my brief, I decided why not try and write
 
 ## Formats Handled So Far...
 
-- Agilent / Infiniium .wfm
+- Agilent / Infiniium (.wfm)
     -  Versions 6 - 11
-- CSV
-- TekTronix ISF
-- TekTronix WFM
+- CSV (.csv)
+- TekTronix ISF (.isf)
+- TekTronix WFM (.wfm)
     - Version 1 - 3
-- TekTronix LLWFM
+- TekTronix LLWFM (.wfm)
+
+Note: I'm pretty dubious as to how worthwhile CSV is going to be in the long run given this isn't a scope format, more a kind of export certain scopes can perform, and CSV parsing is relatively trivial anyway.  As such, don't get too attached to it remaining here unless I can convince myself of the merits of it.
 
 ## Usage
 
